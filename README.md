@@ -1,4 +1,4 @@
-##Kidddo macOS Print Webhook Example (Node.js)
+## Kidddo macOS Print Webhook Example (Node.js)
 
 This is an example of how to utilize Kidddo's [Print Webhook](https://kidddo.com/print-webhook) feature to create your own Print Server on macOS. This guide is intended for experienced developers - attempt at your own risk. At the time of this writing the latest version of Node.js and referenced modules work - but you will want to verify and make modifications as necessary.
 
@@ -16,7 +16,7 @@ Here's our checklist of what we will accomplish:
 * Auto-Run at System Startup
 
 ===
-###Install Printer Drivers
+### Install Printer Drivers
 For the purpose of this tutorial we will be installing a DYMO Labelwriter printer. (If you're using a different printer - you should be able to find driver downloads on their manufacture's website)
 
 Download Printer Drivers from [DYMO](https://www.dymo.com/compatibility-chart.html)
@@ -24,7 +24,7 @@ Download Printer Drivers from [DYMO](https://www.dymo.com/compatibility-chart.ht
 Install downloaded package using it's installer.
 
 ===
-###Turn on the Mac's web interface for it's CUPS server
+### Turn on the Mac's web interface for it's CUPS server
 
 Your CUPS server resides at [http://127.0.0.1:631](http://127.0.0.1:631). Visit that link in your browser - if the Web Interface does not appear - you will need to enable it:
 
@@ -37,7 +37,7 @@ Type or paste the following command into your Terminal prompt and hit return:
 Now the Web Interface should appear when you refresh your browser page.
 
 ===
-###Add Printer(s) to CUPS admin page
+### Add Printer(s) to CUPS admin page
 In the Web Interface, click on the [Administrative](http://127.0.0.1:631/admin) tab and then click on "Add Printer". Select your connected label printer from the "Local Printers" list and click "Continue".
 
 The Description is what will be referred to as your printer "name" in your Kidddo account. Name it something easily identifiable such as "dymo1". Add a location if you'd like (not necessary) and click "Continue".
@@ -49,7 +49,7 @@ You should now be able to access your printer settings through: [http://127.0.0.
 If you'd like you can print a test page by selecting "Print Test Page" from the "Maintenance" drop down to make sure everything is working correctly so far.
 
 ===
-###Install Node.js
+### Install Node.js
 Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Our print server will run on this platform.
 
 Download and install the free package from [nodejs.org](http://nodejs.org).
@@ -69,7 +69,7 @@ This will install the following modules:
 The install process may take a few moments. If there are any errors you will want to repeat the process.
 
 ===
-###Configure wh.js
+### Configure wh.js
 
 Open wh.js in "Text Edit" your favorite plain-text editor.
 
@@ -83,7 +83,7 @@ If port 3000 is already in use on your device, feel free to change this to whate
 
 
 ===
-###Run wh.js
+### Run wh.js
 
 In Terminal type `node` followed by a space and the path to where wh.js is saved and hit return:
 
@@ -92,19 +92,19 @@ In Terminal type `node` followed by a space and the path to where wh.js is saved
 **TIP:** Terminal will auto-fill the path at the cursor if you drop the file on it's window.
 
 ===
-###Run without Terminal
+### Run without Terminal
 
 Now that we're up and running, say you'd like to be able to Run or Auto-Run wh.js without having to open Terminal or use the command-line every time...
 
 We can use another built-in tool in macOS called [Automator](http://www.macosxautomation.com/automator/) to create an app that will run a shell script for us.
 
-#####Make wh.js Executable
+##### Make wh.js Executable
 
 In Terminal, type (substituing "wh.js" with the full path to your copy of wh.js):
 
     chmod +x wh.js
 
-#####Automator
+##### Automator
 
 Open Automator (in your Applications folder) create a new document (File->New) and select "Application" as the document type.
 
@@ -119,7 +119,7 @@ If PrintServer.js is not in `usr/local/bin` (the home folder of your user acccou
 Save your new application (File->Save), choose a location and name for the app (eg. PrintServer Launcher) and hit "Save". Now you can double-click the app icon to run wh.js like you would any other app. A spinning gear should display in your menu bar - where you can also stop the script from running.
 
 ===
-###Auto-Run at System Startup
+### Auto-Run at System Startup
 
 Now that you've come this far, why not have your PrintServer automatically run when OS X starts up? In case you don't already know how to set this up:
 
